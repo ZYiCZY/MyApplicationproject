@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAccountTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="個人帳號與偏好設定"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1976D2" />
+
+        <TextView
+            android:id="@+id/tvNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暱稱: Alice (團主)"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tvPrepTimeSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="預設準備時間: 20 分鐘"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvLastMileSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="預設最後一哩 (停車步行): 10 分鐘"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvTransportSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="預設交通方式: 機車 (點擊修改)"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FAFAFA"
+            android:padding="12dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改偏好設定"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etNickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="請輸入新暱稱"
+                android:inputType="text"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etPrepTimeSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="請輸入預設準備時間 (分鐘)"
+                android:inputType="number"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/etLastMileSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="請輸入預設最後一哩 (停車步行分鐘)"
+                android:inputType="number"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btnSaveSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="儲存個人設定"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#1976D2" />
+        </LinearLayout>
+
+        <!-- 系統通知與勿擾模式檢查 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFF3E0"
+            android:padding="12dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系統提醒與勿擾模式檢查"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#E65100" />
+
+            <TextView
+                android:id="@+id/tvNotificationDndStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系統通知權限: 已開啟 | 勿擾模式: 未開啟"
+                android:textSize="13sp"
+                android:layout_marginTop="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnTestVibration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="測試通知與震動"
+                    android:textSize="12sp"
+                    android:backgroundTint="#EF6C00" />
+
+                <Button
+                    android:id="@+id/btnOpenSystemSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="開啟系統設定"
+                    android:textSize="12sp"
+                    android:layout_marginStart="4dp"
+                    android:backgroundTint="#FB8C00" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnTestEveningReminder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="測試：1 分鐘後發送前一晚提醒"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#D81B60" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登出帳號"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#E53935" />
+
+    </LinearLayout>
+</ScrollView>

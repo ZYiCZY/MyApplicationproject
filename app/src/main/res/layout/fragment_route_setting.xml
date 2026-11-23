@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:clickable="true"
+    android:focusable="true"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 標題列 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本次聚會路程與交通時間設定"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1976D2" />
+
+        <!-- 1. 起點與目的地區域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#F5F5F5"
+            android:padding="12dp"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/tvDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="聚會集合地點: 士林捷運站"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的出發地: 台北車站 (點擊變更)"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnSearchOrigin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="搜尋地點"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnCurrentLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="目前位置"
+                    android:textSize="13sp"
+                    android:layout_marginStart="4dp" />
+
+                <Button
+                    android:id="@+id/btnPickMap"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="地圖選點"
+                    android:textSize="13sp"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 2. 選擇交通工具 (避免窄螢幕擠爆，採用雙欄或垂直 RadioGroup) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="選擇交通工具"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <RadioGroup
+            android:id="@+id/rgTransportMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbScooter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="機車"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbTransit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="大眾運輸" />
+
+                <RadioButton
+                    android:id="@+id/rbCar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="汽車" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <RadioButton
+                    android:id="@+id/rbWalk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="步行" />
+
+                <RadioButton
+                    android:id="@+id/rbBicycle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="腳踏車" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </RadioGroup>
+
+        <!-- 3. 準備與緩衝時間欄位 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="準備與緩衝時間設定"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/etPrepMins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="準備時間 (分鐘)"
+                android:inputType="number"
+                android:text="20" />
+
+            <EditText
+                android:id="@+id/etBufferMins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="緩衝時間 (分鐘)"
+                android:inputType="number"
+                android:text="10"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnComputeRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="計算路程與時間"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#1976D2" />
+
+        <!-- 4. 查詢結果區域 -->
+        <LinearLayout
+            android:id="@+id/layoutRouteResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#E3F2FD"
+            android:padding="12dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvDistanceAndDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="預估路線距離 (手動估算): 8.2 公里 | 預估耗時: 20 分鐘"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1" />
+
+            <TextView
+                android:id="@+id/tvResultPrepTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="開始準備時間: 11:10"
+                android:textSize="15sp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/tvResultDepartureTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="建議出門時間: 11:30"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#C62828"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvResultArrivalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="預估抵達時間: 12:00"
+                android:textSize="15sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvDataSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="資料來源: 尚未設定 Google 路線服務 (手動備用模式)"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnApplyRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="套用此路線並更新提醒排程"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#388E3C" />
+
+    </LinearLayout>
+</ScrollView>

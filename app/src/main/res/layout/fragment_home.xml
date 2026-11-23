@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAppHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="準時出門助手 - 當前行程"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0" />
+
+        <TextView
+            android:id="@+id/tvMeetingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="早八資管課健行"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvMeetingLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="目的地: 嘉大蘭潭校區資管系館4樓 (抵達期限: 08:00)"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginTop="4dp" />
+
+        <!-- 行程編輯/設定區塊 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="快速設定行程 (M1)"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0" />
+
+            <EditText
+                android:id="@+id/etDestinationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="請輸入目的地 (例如：嘉義大學蘭潭校區)"
+                android:inputType="text"
+                android:text="嘉義大學蘭潭校區"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp">
+
+                <Button
+                    android:id="@+id/btnPickArrivalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="選擇抵達時間"
+                    android:textSize="13sp"
+                    android:backgroundTint="#0288D1" />
+
+                <TextView
+                    android:id="@+id/tvSelectedArrivalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="抵達時間: 08:00"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp">
+
+                <EditText
+                    android:id="@+id/etTravelMins"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="路上預估 (分鐘)"
+                    android:inputType="number"
+                    android:text="15"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/spinnerTransportMode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etMustBringItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="前一晚必帶物品 (例：安全帽,鑰匙,學生證)"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp" />
+
+            <Button
+                android:id="@+id/btnSaveTrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="儲存 / 更新行程"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#2E7D32" />
+        </LinearLayout>
+
+        <!-- 倒推時間的核心卡片 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#E3F2FD"
+            android:padding="14dp"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/tvPersonalizedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="依你最近 N 次的實際紀錄"
+                android:textSize="12sp"
+                android:textColor="#E65100"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvPrepTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="起身時間: 07:15"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1" />
+
+            <TextView
+                android:id="@+id/tvLeaveTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出門時間: 07:35"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#C62828"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/tvEstimatedArrival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="預估抵達時間: 07:55"
+                android:textSize="16sp"
+                android:textColor="#2E7D32"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/tvLastActualDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上次實際花了 45 分鐘"
+                android:textSize="14sp"
+                android:textColor="#673AB7"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/tvTimeBreakdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="時間拆解: 準備 20m | 路上 15m | 最後一哩 10m | 緩衝 5m"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- 必帶物品清單 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="前一晚必帶物品清單 (最多3項)"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#E65100" />
+
+            <CheckBox
+                android:id="@+id/cbItem1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="安全帽"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <CheckBox
+                android:id="@+id/cbItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="鑰匙"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/cbItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="學生證 / 識別證"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 雨天模式與加強提醒設定 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="12dp">
+
+            <Switch
+                android:id="@+id/switchRainyDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="雨天加算模式 (+10分鐘額外緩衝)"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/switchDrivingMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="行車中，暫停提醒 (騎車/開車時不發聲打擾)"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- 4階段耗時記錄按鈕區域 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="實際耗時打卡紀錄 (記錄準備/交通/停車各階段)"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnStep1Prep"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1. 開始準備"
+                android:textSize="12sp"
+                android:backgroundTint="#0288D1" />
+
+            <Button
+                android:id="@+id/btnStep2Leave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2. 我出門了"
+                android:textSize="12sp"
+                android:layout_marginStart="4dp"
+                android:backgroundTint="#4CAF50" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <Button
+                android:id="@+id/btnStep3Park"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3. 已停車下車"
+                android:textSize="12sp"
+                android:backgroundTint="#FF9800" />
+
+            <Button
+                android:id="@+id/btnStep4Arrive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4. 到達目的地"
+                android:textSize="12sp"
+                android:layout_marginStart="4dp"
+                android:backgroundTint="#2E7D32" />
+        </LinearLayout>
+
+        <!-- 分享與設定按鈕 -->
+        <Button
+            android:id="@+id/btnShareEta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="預估抵達訊息預覽與一鍵分享 (LINE/簡訊)"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#7B1FA2" />
+
+        <Button
+            android:id="@+id/btnRouteSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="設定路線與各階段時間參數"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            android:backgroundTint="#1565C0" />
+
+    </LinearLayout>
+</ScrollView>

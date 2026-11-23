@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F8F9FA">
+
+    <TextView
+        android:id="@+id/tvStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="出門紀錄統計: 載入中..."
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="#E8F5E9"
+        android:padding="12dp"
+        android:textColor="#2E7D32" />
+
+    <!-- 個人化中位數學習建議卡片 -->
+    <LinearLayout
+        android:id="@+id/layoutSuggestionCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFF3E0"
+        android:padding="12dp"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/tvSuggestionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="依你最近 N 次的紀錄 (中位數建議)"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#E65100" />
+
+        <TextView
+            android:id="@+id/tvSuggestionDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分析過去 5 次紀錄（中位數）：建議準備 22m、交通 9m、停車步行 12m"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/btnApplySuggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="一鍵套用中位數建議至偏好行程"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#EF6C00" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="歷史實際耗時打卡紀錄"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecords"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>
